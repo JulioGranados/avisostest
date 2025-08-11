@@ -27,3 +27,7 @@ android.accept_sdk_license = True
 
 # No declares android.sdk para evitar confusión
 # android.sdk = 33
+
+# Rutas SDK y NDK externas para evitar SDK interno
+android.sdk_path = /home/runner/Android
+android.ndk_path = /home/runner/Android/ndk/23.1.7779620
