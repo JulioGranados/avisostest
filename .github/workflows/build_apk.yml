@@ -37,8 +37,12 @@ jobs:
           pip install --upgrade pip wheel setuptools cython
           pip install buildozer
 
-      - name: Clean Buildozer cache
-        run: rm -rf .buildozer
+      - name: Clean Buildozer cache and remove conflicting build-tools
+        run: |
+          rm -rf .buildozer
+          rm -rf ~/.buildozer
+          rm -rf $HOME/.buildozer
+          rm -rf $HOME/Android/build-tools/36.*
 
       - name: Build APK (debug)
         env:
@@ -55,4 +59,3 @@ jobs:
         with:
           name: avisos-apk
           path: bin/
-
