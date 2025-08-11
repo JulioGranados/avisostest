@@ -16,14 +16,14 @@ warn_on_root = 1
 # Usa API 33 (coincide con SDK instalado en workflow)
 android.api = 33
 
-# Usa build-tools versión 33.0.2 (coincide con workflow)
+# Fuerza build-tools 33.0.2 para evitar conflictos con 36
 android.build_tools = 33.0.2
 
-# Usa NDK 23b, que es compatible con las versiones anteriores
+# NDK 23b compatible con SDK 33 y build-tools 33.0.2
 android.ndk = 23b
 
-# Esto hace que Buildozer acepte las licencias automáticamente
+# Acepta licencias automáticamente
 android.accept_sdk_license = True
 
-# No pongas android.sdk, para evitar confusión con android.api
+# No declares android.sdk para evitar confusión
 # android.sdk = 33
