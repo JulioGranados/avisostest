@@ -8,24 +8,24 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
+
       - name: Install system packages
         run: |
           sudo apt-get update
-          sudo apt-get install -y python3-venv python3-pip openjdk-11-jdk               git build-essential zip unzip zlib1g-dev libncurses5 libstdc++6
-      - name: Setup Python venv and install Buildozer
+          sudo apt-get install -y python3-venv python3-pip openjdk-11-jdk               git build-essential zip unzip zlib1g-dev libncurses5 libstdc++6               android-sdk android-sdk-platform-tools-common
+
+      - name: Setup Python venv and install Buildozer + deps
         run: |
           python3 -m venv venv
           . venv/bin/activate
           pip install --upgrade pip wheel setuptools cython
           pip install buildozer
-      - name: Install AIDL manually
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y android-sdk android-sdk-platform-tools-common
+
       - name: Build APK (debug)
         run: |
           . venv/bin/activate
           buildozer -v android debug
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
