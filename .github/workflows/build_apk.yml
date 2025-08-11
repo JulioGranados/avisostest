@@ -18,6 +18,10 @@ jobs:
           . venv/bin/activate
           pip install --upgrade pip wheel setuptools cython
           pip install buildozer
+      - name: Install AIDL manually
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y android-sdk android-sdk-platform-tools-common
       - name: Build APK (debug)
         run: |
           . venv/bin/activate
