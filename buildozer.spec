@@ -12,3 +12,8 @@ android.permissions = WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
 [buildozer]
 log_level = 2
 warn_on_root = 1
+android.api = 31
+android.ndk = 23b
+android.accept_sdk_license = True
+android.sdk = 33
+android.build_tools = 33.0.2
