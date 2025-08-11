@@ -26,7 +26,7 @@ jobs:
         run: |
           export ANDROID_SDK_ROOT=$HOME/Android
           export PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH
-          yes | sdkmanager --licenses
+          yes | sdkmanager --licenses || true
           sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2" "ndk;23.1.7779620"
         shell: bash
 
