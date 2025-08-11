@@ -14,6 +14,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3-venv python3-pip openjdk-11-jdk               git build-essential zip unzip zlib1g-dev libncurses5 libstdc++6               android-sdk android-sdk-platform-tools-common
 
+      - name: Install Android build-tools and accept licenses
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager "platforms;android-33" "build-tools;33.0.2" "platform-tools"
+
       - name: Setup Python venv and install Buildozer + deps
         run: |
           python3 -m venv venv
