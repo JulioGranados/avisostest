@@ -3,9 +3,6 @@ name: Build APK with Buildozer
 on:
   workflow_dispatch:
 
-env:
-  PATH: /usr/bin:$PATH
-
 jobs:
   build-apk:
     runs-on: ubuntu-22.04
@@ -16,8 +13,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-venv python3-pip openjdk-11-jdk git build-essential zip unzip zlib1g-dev libncurses5 libstdc++6 wget
-          git --version
-          
+
       - name: Install Android SDK command-line tools
         run: |
           mkdir -p $HOME/Android/cmdline-tools
@@ -41,6 +37,9 @@ jobs:
           pip install --upgrade pip wheel setuptools cython
           pip install buildozer
 
+      - name: Clean Buildozer cache
+        run: rm -rf .buildozer
+
       - name: Build APK (debug)
         env:
           ANDROIDSDK: ${{ env.HOME }}/Android
@@ -49,7 +48,6 @@ jobs:
           PATH: /usr/bin:${{ env.HOME }}/Android/cmdline-tools/latest/bin:${{ env.HOME }}/Android/platform-tools:$PATH
         run: |
           . venv/bin/activate
-          git --version
           buildozer -v android debug
 
       - name: Upload APK artifact
@@ -57,3 +55,4 @@ jobs:
         with:
           name: avisos-apk
           path: bin/
+
