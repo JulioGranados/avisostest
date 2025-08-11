@@ -44,8 +44,10 @@ jobs:
           rm -rf $HOME/.buildozer
           rm -rf $HOME/Android/build-tools/36.*
 
-      - name: List installed build-tools versions
-        run: ls -l $HOME/Android/build-tools
+      - name: Create local.properties to point to external SDK/NDK
+        run: |
+          echo "sdk.dir=$HOME/Android" > ./local.properties
+          echo "ndk.dir=$HOME/Android/ndk/23.1.7779620" >> ./local.properties
 
       - name: Build APK (debug)
         env:
