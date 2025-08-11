@@ -51,6 +51,7 @@ jobs:
         env:
           ANDROIDSDK: ${{ env.HOME }}/Android
           ANDROIDNDK: ${{ env.HOME }}/Android/ndk/23.1.7779620
+          ANDROID_NDK_HOME: ${{ env.HOME }}/Android/ndk/23.1.7779620
           ANDROID_SDK_ROOT: ${{ env.HOME }}/Android
           PATH: /usr/bin:${{ env.HOME }}/Android/cmdline-tools/latest/bin:${{ env.HOME }}/Android/platform-tools:$PATH
         run: |
