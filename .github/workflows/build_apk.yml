@@ -44,6 +44,9 @@ jobs:
           rm -rf $HOME/.buildozer
           rm -rf $HOME/Android/build-tools/36.*
 
+      - name: List installed build-tools versions
+        run: ls -l $HOME/Android/build-tools
+
       - name: Build APK (debug)
         env:
           ANDROIDSDK: ${{ env.HOME }}/Android
@@ -52,7 +55,7 @@ jobs:
           PATH: /usr/bin:${{ env.HOME }}/Android/cmdline-tools/latest/bin:${{ env.HOME }}/Android/platform-tools:$PATH
         run: |
           . venv/bin/activate
-          buildozer -v android debug
+          buildozer -v android debug android.build_tools=33.0.2
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
